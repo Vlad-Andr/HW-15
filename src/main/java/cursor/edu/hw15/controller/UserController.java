@@ -12,10 +12,11 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("")
 public class UserController {
     private final UserServiceImpl userService;
 
-    @PostMapping("admin/add-user")
+    @PostMapping("admin/newUser")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         userService.saveUser(user);
         return ResponseEntity
@@ -23,22 +24,22 @@ public class UserController {
                 .build();
     }
 
-    @DeleteMapping("/admin/{username}")
+    @DeleteMapping("admin/delete/{username}")
     public void deleteUser(@PathVariable("username") String username) {
         userService.deleteByUsername(username);
     }
 
-    @GetMapping("/admin/id/{id}")
+    @GetMapping("admin/getUserById/{id}")
     public Optional<User> getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping("/admin/all")
+    @GetMapping("admin/getAll")
     public List<User> findAll() {
         return userService.findAll();
     }
 
-    @GetMapping("/user/{username}")
+    @GetMapping("admin/getUserByName/{username}")
     public Optional<User> findByUsername(@PathVariable("username") String username) {
 
         return userService.findByUsername(username);
