@@ -12,11 +12,10 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("")
 public class UserController {
     private final UserServiceImpl userService;
 
-    @PostMapping("admin/newUser")
+    @PostMapping("user/newUser")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         userService.saveUser(user);
         return ResponseEntity
@@ -41,7 +40,6 @@ public class UserController {
 
     @GetMapping("admin/getUserByName/{username}")
     public Optional<User> findByUsername(@PathVariable("username") String username) {
-
         return userService.findByUsername(username);
     }
 }
