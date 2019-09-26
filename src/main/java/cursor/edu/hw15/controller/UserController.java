@@ -28,17 +28,17 @@ public class UserController {
         userService.deleteByUsername(username);
     }
 
-    @GetMapping("admin/getUserById/{id}")
+    @GetMapping("user/getUserById/{id}")
     public Optional<User> getUserById(@PathVariable("id") Long id) {
         return userService.getUserById(id);
     }
 
-    @GetMapping("admin/getAll")
+    @GetMapping("user/getAll")
     public List<User> findAll() {
         return userService.findAll();
     }
 
-    @GetMapping("admin/getUserByName/{username}")
+    @GetMapping("user/getUserByName/{username}")
     public Optional<User> findByUsername(@PathVariable("username") String username) {
         return userService.findByUsername(username);
     }
